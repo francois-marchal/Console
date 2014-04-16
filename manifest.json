@@ -1,0 +1,35 @@
+{
+	"extension": 
+	{
+		"name": "consoleLog",
+		"version": "1.0.0",
+		"description": "Wakanda Studio console Logger",
+		"icon": "consoleLog.png",
+		
+		"senders": [
+			{
+				"location": "studioToolbar", 
+				"tips": "Console : Displays the messages sent by your js code using consoleLog()",
+				"icon": "consoleLog.png",
+				"title": "Console",
+				"actionName": "openConsole"
+			}
+		],
+		
+		"actions": [
+			{
+				"name": "openConsole",
+				"title": "openConsole"
+			},
+			{
+				"name": "initConsole",
+				"title": "initConsole",
+				"trigger": [
+					{ "event": "onStudioStart" }
+				]
+			}
+		],
+
+		"lifetime": "action_lifetime"
+	}
+}
