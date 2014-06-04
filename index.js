@@ -21,12 +21,24 @@
 
 exports.handleMessage = function handleMessage(message)
 {
-    if (message.action == 'openConsole')
-    {
-        studio.extension.openPageInTab('index.html','Console',true);
+    var fullVers = studio.version;
+    var ar = fullVers.split(".");
+    var vers = ar[0];
+
+    var goodVers = vers >= 9 || vers == 0;
+
+    if (message.action == 'openConsole') {
+        if (goodVers) {
+            studio.extension.openPageInTab('index.html', 'Console', true);
+        }
+        else {
+            studio.alert( "You need a Wakanda Studio version 9 to run Console extension.")
+        }
     }
-    else if (message.action == 'initConsole')
-    {
-        studio.extension.registerTabPage('index.html', 'tabIcon.png','Console: displays messages sent by console.log() in JS code.');
+    else if (message.action == 'initConsole') {
+        if (goodVers) {
+            studio.extension.registerTabPage('index.html', 'tabIcon.png', 'Console: displays messages sent by console.log() in JS code.');
+        }
     }
 }
+
