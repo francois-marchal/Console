@@ -21,9 +21,7 @@
 
 exports.handleMessage = function handleMessage(message)
 {
-    var fullVers = studio.version;
-    var ar = fullVers.split(".");
-    var vers = ar[0];
+    var vers = studio.mainProductVersion;
 
     var goodVers = vers >= 9 || vers == 0;
 
@@ -32,7 +30,7 @@ exports.handleMessage = function handleMessage(message)
             studio.extension.openPageInTab('index.html', 'Console', true);
         }
         else {
-            studio.alert( "You need a Wakanda Studio version 9 to run Console extension.")
+            studio.alert("The Console extension currently only works with Wakanda version 9.");
         }
     }
     else if (message.action == 'initConsole') {
