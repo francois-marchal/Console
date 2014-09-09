@@ -21,22 +21,11 @@
 
 exports.handleMessage = function handleMessage(message)
 {
-    var vers = studio.mainProductVersion;
-
-    var goodVers = vers >= 9 || vers == 0;
-
     if (message.action == 'openConsole') {
-        if (goodVers) {
-            studio.extension.openPageInTab('index.html', 'Console', true);
-        }
-        else {
-            studio.alert("The Console extension currently only works with Wakanda version 9.");
-        }
+        studio.extension.openPageInTab('index.html', 'Console', true);
     }
     else if (message.action == 'initConsole') {
-        if (goodVers) {
-            studio.extension.registerTabPage('index.html', 'tabIcon.png', 'Console: displays messages sent by console.log() in JS code.');
-        }
+        studio.extension.registerTabPage('index.html', 'tabIcon.png', 'Console: displays messages sent by console.log() in JS code.');
     }
 }
 
